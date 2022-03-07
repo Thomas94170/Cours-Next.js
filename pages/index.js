@@ -13,10 +13,13 @@ const Home = ({data}) =>{
 
   return(
     <Layout>
-      <h1>Agence Immo</h1>
-      {/* {JSON.stringify(data)} */}
-      {
-      data.map(region =>(
+    <div className="container">
+        <p>Cette page utilise getServerSideProps</p>
+        <img src='/lagon.jpg'/>
+        <h1>Agence Immo</h1>
+        {/* {JSON.stringify(data)} */}
+        {
+        data.map(region =>(
         <div style ={styles} key={region.code}>
           <Link href="/region/[code]" as={`/region/${region.code}`} passHref>
           <h1>{region.nom}</h1>
@@ -24,8 +27,9 @@ const Home = ({data}) =>{
         
          <p>{region.code}</p>
         </div>
-      ))
-    }
+        ))
+      }
+    </div> 
     </Layout>
   )
 }
@@ -51,4 +55,8 @@ export default Home;
 //  {JSON.stringify(data)} permet de nous afficher en dur les données de l API
 
 // cons styles c est un petit css qu on lui donne et  <div style ={styles}>
-// on lui applique
+
+// ligne 17 servir des dossiers statiques: afficher tt simplement une image
+
+// ligne 16 nous importons notre cdn bootstrapp du fichier _document.js dans une div className="container"
+// cette div est a mettre sur chacune de nos pages afin de rendre l appli responsive 

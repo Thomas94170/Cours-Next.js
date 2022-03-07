@@ -22,6 +22,7 @@ const Blog = ({posts}) =>{
 
   return(
     <Layout>
+      <p>Cette page utilise getStaticProps</p>
       {/* {JSON.stringify(data)} */}
       {posts.map(post =>(
         <div style ={styles.main} key ={post.id}> 
