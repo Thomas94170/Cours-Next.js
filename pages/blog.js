@@ -3,6 +3,7 @@ import { Layout } from "../components/Layout";
 import Link from "next/link";
 // import { useRouter } from "next/router";
 import axios from "axios";
+import Head from "next/head";
 
 
 
@@ -21,7 +22,11 @@ const Blog = ({posts}) =>{
   }
 
   return(
-    <Layout>
+    <>
+      <Head>
+        <title>Articles du Blog</title>
+      </Head>
+      <Layout>
       <p>Cette page utilise getStaticProps</p>
       {/* {JSON.stringify(data)} */}
       {posts.map(post =>(
@@ -38,6 +43,8 @@ const Blog = ({posts}) =>{
           
       ))}
     </Layout>
+    </>
+    
   );
 };
 

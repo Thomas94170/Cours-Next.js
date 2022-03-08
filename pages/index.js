@@ -2,6 +2,7 @@ import React from "react"
 import {Layout} from "../components/Layout"
 import axios from "axios"
 import Link from "next/link"
+import Head from "next/head"
 
 
 const Home = ({data}) =>{
@@ -11,8 +12,14 @@ const Home = ({data}) =>{
     borderBottom : "1px solid"
   }
 
+  console.log(process.env.API_ROOT)
+  console.log(process.env.NEXT_PUBLIC_API_ROOT)
   return(
-    <Layout>
+    <>
+      <Head>
+        <title>Liste des régions</title>
+      </Head>
+      <Layout>
     <div className="container">
         <p>Cette page utilise getServerSideProps</p>
         <img src='/lagon.jpg'/>
@@ -31,6 +38,8 @@ const Home = ({data}) =>{
       }
     </div> 
     </Layout>
+    </>
+    
   )
 }
 
@@ -38,7 +47,7 @@ export const getServerSideProps = async (context)=>{
 
   const url = "https://geo.api.gouv.fr";
   const {data} = await axios.get(`${url}/regions`)
-
+  console.log(process.env.API_ROOT)
   return {
     props:{
       data
@@ -60,3 +69,12 @@ export default Home;
 
 // ligne 16 nous importons notre cdn bootstrapp du fichier _document.js dans une div className="container"
 // cette div est a mettre sur chacune de nos pages afin de rendre l appli responsive 
+
+
+// ajouter un titre à la page(visible onglet page web)
+// importer Head, pui dans notre balise <Head> balise <title> liste des régions
+
+// mes 2 console log coté serveur et cote client
+// mon console log coté serveur sera undefined sur ma console page web 
+// mais marquera localhost dans mon terminal
+// console log ligne 16 dans ma console affichera en production idem dans mon terminal

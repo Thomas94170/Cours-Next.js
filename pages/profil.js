@@ -4,6 +4,7 @@ import Link from "next/link"
 // import { useRouter } from "next/router"
 import Blog from "./Blog"
 import axios from "axios"
+import Head from "next/head"
 
 
 // const NameLink = ({nom}) =>(
@@ -38,7 +39,11 @@ export default function Profil() {
   // const router = useRouter()
   // console.log(router.query)
   return (
-    <Layout>
+    <>
+      <Head>
+        <title>Liste des contacts</title>
+      </Head>
+      <Layout>
       <p>Cette page utilise useEffect (Rendu coté client)</p>
       {/* {JSON.stringify(data)} */}
       {
@@ -65,6 +70,8 @@ export default function Profil() {
       <NameLink nom="Adam"/>
     </ul> */}
     </Layout>
+    </>
+    
   )
 }
 

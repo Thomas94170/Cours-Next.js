@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { Layout } from "../../components/Layout";
 import axios from "axios";
+import Head from "next/head";
 
 export default function Titre({data}){
     // console.log(id)
@@ -10,7 +11,13 @@ export default function Titre({data}){
     console.log(router.query)
 
     return(
-        <Layout>
+        <>
+        <Head>
+            <title>
+                {data.title}   
+            </title>
+        </Head>
+            <Layout>
             {/* {JSON.stringify(data)} */}
             <h1>{data.title}</h1>
             <div>
@@ -18,6 +25,8 @@ export default function Titre({data}){
             </div>
             <p>{data.description}</p>
         </Layout>
+        </>
+        
     )
 }
 
@@ -53,3 +62,8 @@ export const getStaticProps = async({params}) =>{
 // dans ma props, je retourne data au lieu de id
 
 // pour afficher toute mes données dans mon layout <h1>{data.title}</h1> etc...
+
+
+// pour ajouter un titre à ma page
+// importer Head puis dans <Head> <title> {data.title}
+// on map simplement l'info de l api
