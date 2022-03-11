@@ -11,6 +11,7 @@ export default function Items() {
       <li>Prix</li>
       <li>Superficie</li>
       <li>Jardin</li>
+      <li>Dépendance</li>
     </ul>
     </Layout>
   )
