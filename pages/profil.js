@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
 import Link from "next/link"
 // import { useRouter } from "next/router"
-import Blog from "./Blog"
+import Blog from "./blog"
 import axios from "axios"
 import Head from "next/head"
 
