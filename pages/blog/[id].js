@@ -7,12 +7,16 @@ import Head from "next/head";
 export default function Titre({data}){
     // console.log(id)
 
-    const router = useRouter();
-    console.log(router.query)
+    // const router = useRouter();
+    // console.log(router.query)
 
     return(
+
         <>
-        <Head>
+        {
+           data && (
+               <>
+                <Head>
             <title>
                 {data.title}   
             </title>
@@ -25,6 +29,10 @@ export default function Titre({data}){
             </div>
             <p>{data.description}</p>
         </Layout>
+               </>
+           ) 
+        }
+        
         </>
         
     )
@@ -67,3 +75,5 @@ export const getStaticProps = async({params}) =>{
 // pour ajouter un titre à ma page
 // importer Head puis dans <Head> <title> {data.title}
 // on map simplement l'info de l api
+
+// pour deployer l appli sur versel, il faut afin que le deploiement ne plante pas mettre notre code dans une condition, voir de la ligne 16 à 34

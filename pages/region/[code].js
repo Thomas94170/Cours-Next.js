@@ -8,18 +8,26 @@ const codeRegion =({data})=>{
 
     
     return(
-        <>
-        <Head>
-            <title>
-                {data.nom}
-            </title>
-        </Head>
-        <Layout>
-            {/* {JSON.stringify(data)} */}
-            <h1>Region : {data.nom}</h1>
-            <p>Code : {data.code}</p>
-        </Layout>
-        </>
+    <>
+        {
+            data && (
+            <>
+            <Head>
+                <title>
+                    {data.nom}
+                </title>
+            </Head>
+            <Layout>
+                {/* {JSON.stringify(data)} */}
+                <h1>Region : {data.nom}</h1>
+                <p>Code : {data.code}</p>
+                </Layout>
+            </>
+
+            )
+        }
+        
+    </>
        
     )
 }
@@ -46,3 +54,6 @@ export default codeRegion;
 // avec a l interieur une requete axios afin de recuperer les informations 
 // on ne peut pas utiliser useRouter dans getServerSideProps car useRouter est utilisé coté client et l autre coté serveur
 // on utilise donc const code = context.params.code; pour recuperer les parametres pour les routes dynamiques
+
+// Pour deployer mon site je dois faire une condition et mettre mon code dedans 
+// voir ligne 12 à 28

@@ -1,8 +1,12 @@
-import React from "react"
+import React, { useEffect } from "react"
 import {Layout} from "../components/Layout"
 import axios from "axios"
 import Link from "next/link"
 import Head from "next/head"
+// import Exemple from "../components/exemple"
+// import dynamic from "next/dynamic"
+
+// const Exemple = dynamic(()=> import ("../components/exemple"), {ssr: false})
 
 
 const Home = ({data}) =>{
@@ -12,8 +16,16 @@ const Home = ({data}) =>{
     borderBottom : "1px solid"
   }
 
-  console.log(process.env.API_ROOT)
-  console.log(process.env.NEXT_PUBLIC_API_ROOT)
+  // console.log(process.env.API_ROOT)
+  // console.log(process.env.NEXT_PUBLIC_API_ROOT)
+
+  // useEffect(()=>{
+  //   localStorage.setItem("jwt-token", "hf58665hdgd58fg");
+
+
+  // },[])
+
+
   return(
     <>
       <Head>
@@ -21,6 +33,7 @@ const Home = ({data}) =>{
       </Head>
       <Layout>
     <div className="container">
+      {/* <Exemple/> */}
         <p>Cette page utilise getServerSideProps</p>
         <img src='/lagon.jpg'/>
         <h1>Agence Immo</h1>
@@ -45,9 +58,9 @@ const Home = ({data}) =>{
 
 export const getServerSideProps = async (context)=>{
 
-  const url = "https://geo.api.gouv.fr";
-  const {data} = await axios.get(`${url}/regions`)
-  console.log(process.env.API_ROOT)
+  // const url = "https://geo.api.gouv.fr";
+  const {data} = await axios.get(`${process.env.API_GEO}/regions`)
+  // console.log(process.env.API_ROOT)
   return {
     props:{
       data
@@ -78,3 +91,6 @@ export default Home;
 // mon console log coté serveur sera undefined sur ma console page web 
 // mais marquera localhost dans mon terminal
 // console log ligne 16 dans ma console affichera en production idem dans mon terminal
+// en ajoutant l url api geo a notre .env 
+// nous pouvons supprimer la const url et remplacer le terme url dans notre const data
+// en retournant sur notre page, l api s affiche tjrs tres bien 
